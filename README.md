@@ -141,8 +141,8 @@ Done.
 
 ### `escapeSpecialCharacters`
 
-JavaScript string tags by default add an extra `\` escape in front of some special characters such as `$` dollar signs.
-`dedent` will escape those special characters when called as a string tag.
+Tagged templates expose the raw text of escape sequences such as `\$`.
+By default, `dedent` removes the backslash from those escaped special characters when called as a string tag.
 
 If you'd like to change the behavior, an `escapeSpecialCharacters` option is available.
 It defaults to:
@@ -155,17 +155,17 @@ import dedent from "dedent";
 
 // "$hello!"
 dedent`
-	$hello!
+	\$hello!
 `;
 
 // "\$hello!"
 dedent.withOptions({ escapeSpecialCharacters: false })`
-	$hello!
+	\$hello!
 `;
 
 // "$hello!"
 dedent.withOptions({ escapeSpecialCharacters: true })`
-	$hello!
+	\$hello!
 `;
 ```
 
